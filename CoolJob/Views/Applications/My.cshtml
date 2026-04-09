@@ -1,0 +1,55 @@
+﻿@using CoolJob.Helpers
+@model IEnumerable<Application>
+
+@{
+    ViewData["Title"] = T.Get("Applications.My.Title");
+    ViewBag.Css = new[] { "css/style.css", "css/MyApplictaions.css" };
+}
+
+<div class="applications-container">
+    <h1><i class="fas fa-file-alt"></i> @T.Get("Applications.My.Title")</h1>
+
+    <div class="applications-list">
+        @if (!Model.Any())
+        {
+            <p class="no-data">@T.Get("Profile.NoApplications")</p>
+        }
+        else
+        {
+            @foreach (var item in Model)
+            {
+                <div class="application-card @item.Status.ToString().ToLower()">
+                    <div class="application-header">
+                        <h3>@item.Job.Title</h3>
+                        <span class="status-badge">@T.Get($"Status.{item.Status}")</span>
+                    </div>
+
+                    <div class="application-body">
+                        <p><strong>@T.Get("Applications.My.Employer"):</strong> @item.Job.Employer.Name</p>
+                        <p><strong>@T.Get("Applications.My.Date"):</strong> @item.ApplyDate.ToString("dd.MM.yyyy")</p>
+
+                        @if (!string.IsNullOrEmpty(item.CoverLetter))
+                        {
+                            <div class="cover-letter">
+                                <h4>@T.Get("Applications.My.CoverLetter"):</h4>
+                                <p>@item.CoverLetter</p>
+                            </div>
+                        }
+                    </div>
+
+                    <div class="application-actions">
+                        <a asp-action="Details" asp-route-id="@item.Id" class="btn-details">
+                            <i class="fas fa-eye"></i> @T.Get("Applications.My.Details")
+                        </a>
+                        <form asp-action="Withdraw" method="post" onsubmit="return confirm('@T.Get("Applications.My.WithdrawConfirm")')";>
+                            <input type="hidden" name="id" value="@item.Id" />
+                            <button type="submit" class="btn-withdraw">
+                                <i class="fas fa-trash-alt"></i> @T.Get("Applications.My.Withdraw")
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            }
+        }
+    </div>
+</div>

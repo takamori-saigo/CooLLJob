@@ -1,0 +1,15 @@
+﻿@using CoolJob.Helpers
+@{
+    ViewData["Title"] = T.Get("Auth.AccessDenied.Title");
+}
+
+<div class="access-denied-container">
+    <div class="access-denied-card">
+        <i class="fas fa-ban icon"></i>
+        <h1>@T.Get("Auth.AccessDenied.Header")</h1>
+        <p>@T.Get("Auth.AccessDenied.Message")</p>
+        <a asp-controller="Home" asp-action="Index" class="home-link">
+            <i class="fas fa-home"></i> @T.Get("Auth.AccessDenied.Home")
+        </a>
+    </div>
+</div>

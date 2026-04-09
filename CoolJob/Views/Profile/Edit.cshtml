@@ -1,0 +1,43 @@
+﻿@using CoolJob.Helpers
+@model CoolJob.Models.User
+
+@{
+    ViewBag.Css = new[] { "css/profile.css", "css/style.css"};
+    ViewData["Title"] = T.Get("Profile.Edit.Title");
+}
+
+<div class="edit-profile-container">
+    <h2><i class="fas fa-user-edit"></i> @T.Get("Profile.Edit.Title")</h2>
+    
+    <form asp-action="Edit" method="post">
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+        <input type="hidden" asp-for="Id" />
+        
+        <div class="form-group">
+            <label asp-for="FirstName" class="control-label">@T.Get("Profile.Edit.FirstName")</label>
+            <input asp-for="FirstName" class="form-control" />
+            <span asp-validation-for="FirstName" class="text-danger"></span>
+        </div>
+        
+        <div class="form-group">
+            <label asp-for="LastName" class="control-label">@T.Get("Profile.Edit.LastName")</label>
+            <input asp-for="LastName" class="form-control" />
+            <span asp-validation-for="LastName" class="text-danger"></span>
+        </div>
+        
+        <div class="form-group">
+            <label asp-for="Faculty" class="control-label">@T.Get("Profile.Edit.Faculty")</label>
+            <input asp-for="Faculty" class="form-control" />
+            <span asp-validation-for="Faculty" class="text-danger"></span>
+        </div>
+        
+        <div class="form-actions">
+            <button type="submit" class="btn btn-save">
+                <i class="fas fa-save"></i> @T.Get("Profile.Edit.Save")
+            </button>
+            <a asp-action="Index" class="btn btn-cancel">
+                <i class="fas fa-times"></i> @T.Get("Profile.Edit.Cancel")
+            </a>
+        </div>
+    </form>
+</div>

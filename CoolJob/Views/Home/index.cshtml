@@ -1,0 +1,65 @@
+@using CoolJob.Helpers
+@{
+    ViewBag.Title = T.Get("Home.Hero.Title");
+    ViewBag.Css = new[] { "css/style.css"};
+}
+
+<section class="hero-section">
+    <div class="hero-content">
+        <h2>@T.Get("Home.Hero.Title")</h2>
+        <p>@T.Get("Home.Hero.Subtitle")</p>
+        <div class="cta-buttons">
+            <a href="/Jobs" class="cta-button">@T.Get("Home.Hero.SearchBtn")</a>
+            <a href="/Partners" class="cta-button secondary">@T.Get("Home.Hero.PartnersBtn")</a>
+        </div>
+    </div>
+</section>
+
+<section class="features-section">
+    <div class="feature-card">
+        <h3>@T.Get("Home.Feature.FastSearch.Title")</h3>
+        <p>@T.Get("Home.Feature.FastSearch.Desc")</p>
+    </div>
+    
+    <div class="feature-card">
+        <h3>@T.Get("Home.Feature.Apply.Title")</h3>
+        <p>@T.Get("Home.Feature.Apply.Desc")</p>
+    </div>
+    
+    <div class="feature-card">
+        <h3>@T.Get("Home.Feature.Notifications.Title")</h3>
+        <p>@T.Get("Home.Feature.Notifications.Desc")</p>
+    </div>
+</section>
+
+<section class="vacancies-preview">
+    <h2>@T.Get("Home.Vacancies.Title")</h2>
+    <div class="vacancies-grid">
+        <!-- Демо-карточки (статические). Если потом подключишь их из БД, они переведутся автоматически -->
+        <div class="vacancy-card">
+            <h3>Ассистент преподавателя</h3>
+            <p>Кафедра информатики · 15-20 часов/неделя</p>
+            <div class="vacancy-meta">
+                <span class="badge">На кампусе</span>
+                <span class="salary">от 25 000 ₽</span>
+            </div>
+        </div>
+        <div class="vacancy-card">
+            <h3>Стажёр в IT компанию</h3>
+            <p>TechPartner Inc. · Полный день</p>
+            <div class="vacancy-meta">
+                <span class="badge external">Вне кампуса</span>
+                <span class="salary">от 40 000 ₽</span>
+            </div>
+        </div>
+        <div class="vacancy-card">
+            <h3>Исследовательский проект</h3>
+            <p>Лаборатория искусственного интеллекта · Гибкий график</p>
+            <div class="vacancy-meta">
+                <span class="badge">На кампусе</span>
+                <span class="salary">Грант до 100 000 ₽</span>
+            </div>
+        </div>
+    </div>
+    <a href="/Jobs" class="see-all">@T.Get("Home.Vacancies.SeeAll")</a>
+</section>
